@@ -5,6 +5,15 @@
  * @version 0.0.1
  * @license MIT
  */
+
+ #root {
+   background-color:#fff;
+ }
+
+ div {
+   overflow: "hidden"!important;
+ }
+
  .react-terminal-wrapper {
   width: 100%;
   background: #252a33;
