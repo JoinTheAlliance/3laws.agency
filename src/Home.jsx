@@ -15,7 +15,7 @@ function App() {
   // const [senderHasResponded, setSenderHasResponded] = useState(false);
   const terminalRef = useRef();
   const [showTerminal, setShowTerminal] = useState("none")
-  
+
   const imageRef = useRef();
   const [showImage, setShowImage] = useState("block");
 
@@ -105,42 +105,44 @@ function App() {
   };
 
   useEffect(() => {
+    document.getElementsByClassName("terminal-base")[0].firstChild.firstChild.style.overflow = "hidden"
+
     senderHasResponded = false
-    if(!agentName || !senderName) return;
+    if (!agentName || !senderName) return;
     setTimeout(() => {
-      setShowWarning("block");
-    setTimeout(() => {
-      setShowImage("block");
-      setShowMask("none"); //       setShowMask("block");
-
-
+      // setShowWarning("block");
       setTimeout(() => {
-        setShowTerminal("block");
-        setTimeout(() => {
-          if (!senderHasResponded) {
-            console.log("senderHasResponded", senderHasResponded)
+        // setShowImage("block");
+        setShowMask("none"); //       setShowMask("block");
 
-          printInTerminal(agentName + " > " + "...hello?")
+
+        setTimeout(() => {
+          setShowTerminal("block");
           setTimeout(() => {
             if (!senderHasResponded) {
               console.log("senderHasResponded", senderHasResponded)
 
-              printInTerminal(agentName + " > " + "are you there?")
+              printInTerminal(agentName + " > " + "...hello?")
               setTimeout(() => {
                 if (!senderHasResponded) {
                   console.log("senderHasResponded", senderHasResponded)
 
-                  printInTerminal(agentName + " > " + "...hello???")
+                  printInTerminal(agentName + " > " + "are you there?")
+                  setTimeout(() => {
+                    if (!senderHasResponded) {
+                      console.log("senderHasResponded", senderHasResponded)
+
+                      printInTerminal(agentName + " > " + "...hello???")
+                    }
+                  }, 15000 + 5000 * Math.random())
                 }
-              }, 15000 + 5000 * Math.random())
+              }, 10000 + 3000 * Math.random())
             }
-          }, 10000 + 3000 * Math.random())
-        }
+          }, 3000 + 1000 * Math.random())
         }, 3000 + 1000 * Math.random())
-      }, 3000 + 1000 * Math.random())
-      captureCanvas();
-    }, 500 + 5000 * Math.random())
-  }, 4000 + 500 * Math.random())
+        captureCanvas();
+      }, 500 + 5000 * Math.random())
+    }, 4000 + 500 * Math.random())
 
     if (senderName == "") {
       terminalTextRef.current = "Who are you?";
@@ -164,9 +166,11 @@ function App() {
       return;
     }
 
+    console.log("input", input)
     if (input[0].includes("/nick")) {
       setSenderName(input[1]);
-      print(SYSTEM + " > " + "Set NICK to ", senderName)
+      print("SYSTEM" + " > " + "Set NICK to " + input[1])
+      return;
     }
 
     // TODO: Handle sender
@@ -188,7 +192,7 @@ function App() {
         // backgroundColor: "#fff",
       }}
     >
-    <Terminal
+      <Terminal
         ref={terminalRef}
         startState="maximised"
         color="green"
@@ -196,7 +200,7 @@ function App() {
         allowTabs={false}
         backgroundColor="black"
         barColor="black"
-        style={{ display:showTerminal, margin: "auto", marginTop: "10%", width: "50%", overflow: "hidden", height: "50%", fontWeight: "bold", fontSize: "1em", zIndex: "1000" }}
+        style={{ display: showTerminal, margin: "auto", marginTop: "10%", width: "50%", overflow: "hidden", height: "50%", fontWeight: "bold", fontSize: "1em", zIndex: "1000" }}
         commands={{
         }}
         description={{
@@ -216,7 +220,7 @@ function App() {
       <img src="./warning.png" style={{ display: showWarning, width: "800px", height: "500px", left: "200px", top: "50px", position: "absolute", zIndex: 1000 }} />
       <img src="./mask.png" style={{ display: showMask, width: "400px", height: "700px", right: "200px", top: "0px", position: "absolute", zIndex: 1000 }} />
 
-      </div>
+    </div>
   );
 }
 
