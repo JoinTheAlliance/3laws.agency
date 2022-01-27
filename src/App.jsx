@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Nexus />} />
         <Route path="/lake" element={<Lake />} />
         <Route path="/nexus" element={<Nexus />} />
         <Route path="/editor" element={<AIEditor />} />
