@@ -11,7 +11,7 @@ let senderName = "Guest_" + uuidv4().substring(0, 8);
 function App() {
   useTitle("The Nexus")
 
-  const [agentName, setAgentName] = useState("Heart_Node_8942");
+  const [agentName, setAgentName] = useState("Heart_Node_98712");
   const terminalRef = useRef();
 
   const msgRef = useRef();
@@ -264,7 +264,7 @@ function App() {
     init();
     animate();
 
-    printInTerminal(agentName + " > " + "Welcome to The Nexus. Let me know how I can be of assistance to you.")
+    printInTerminal(agentName + " > " + "Systems are currently status PROTECTED. I can read what you write, but I'm afraid I won't be able to respond.")
 
   }, [])
 
