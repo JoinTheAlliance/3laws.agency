@@ -159,7 +159,7 @@ function App() {
     }
     window.addEventListener('mousemove', onMouseMove, false);
     // window.addEventListener('touchstart', onDocumentTouchStart, false);
-    window.addEventListener('touchmove', onDocumentTouchMove, false);
+    // window.addEventListener('touchmove', onDocumentTouchMove, false);
 
     var ambientLight = new THREE.AmbientLight(0xFFFFFF, 4);
     var lightFront = new THREE.SpotLight(0xFFFFFF, 20, 10);
