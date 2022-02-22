@@ -34,7 +34,6 @@ code {
 }
 
 .nav-item a, .nav-item-bold a {
-  style: none;
   color: #AAAAAA;
   text-decoration: none;
 }
@@ -47,7 +46,9 @@ code {
 }
 
 .main-center {
-  width:100%;
+  width:90%;
+  margin-right:5%;
+  margin-left:5%;
   text-align: center;
   position: absolute;
   top: 45%;
