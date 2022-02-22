@@ -1,40 +1,16 @@
-import axios from "axios";
 import { Power1, TweenMax } from "gsap";
-import React, { useEffect, useRef, useState } from "react";
-import { useTitle } from 'react-use';
-import Terminal from "terminal-in-react";
+import React, { useEffect, useState } from "react";
 import * as THREE from 'three';
-import { v4 as uuidv4 } from 'uuid';
-
-let senderName = "Guest_" + uuidv4().substring(0, 8);
+import Typist from 'react-typist';
 
 function App() {
-  useTitle("The Nexus")
-
-  const [agentName, setAgentName] = useState("Heart_Node_98712");
-  const terminalRef = useRef();
-
-  const msgRef = useRef();
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
-    document.getElementsByClassName("terminal-base")[0].firstChild.firstChild.style.overflow = "hidden"
-  }, []);
-
-  const handleCommand = (input, print) => {
-    if (input[0].includes("/nick")) {
-      terminalRef.current.
-        senderName = input[1];
-      print("SYSTEM" + "> " + "Set NICK to " + input[1])
-      return;
-    }
-    // TODO: Handle sender
-    const body = { sender: senderName, command: input.join(" ") };
-    axios.post(`${process.env.VITE_SERVER_CONNECTION_URL}/execute`, body).then(res => {
-      console.log("response is", res);
-      console.log(agentName + "> " + res.data.result);
-      print(agentName + "> " + res.data.result)
-    });
-  };
+    // document.title = `You clicked ${count} times`;
+    console.log("Count: " + count);
+    setCount(1);
+  }, [count]);
 
   useEffect(() => {
 
@@ -263,31 +239,12 @@ function App() {
     generateLines();
     init();
     animate();
-
-    printInTerminal(agentName + " > " + "Systems are currently status PROTECTED. I can read what you write, but I'm afraid I won't be able to respond.")
-
   }, [])
 
-
-  const printInTerminal = (content) => {
-    console.log("terminalRef.current", terminalRef.current)
-    terminalRef.current.state.instances[0].instance.updater.enqueueSetState(
-      terminalRef.current.state.instances[0].instance,
-      {
-        summary: [
-          ...terminalRef.current.state.instances[0].instance.state.summary,
-          ...(Array.isArray(content) ? content.map((c) => [c]) : [content]),
-        ],
-      }
-    );
-  };
 
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         width: "100vw",
         height: "100vh",
         position: "absolute",
@@ -296,26 +253,31 @@ function App() {
         zIndex: 1000
       }}
     >
-      <Terminal
-        ref={terminalRef}
-        startState="maximised"
-        color="#999"
-        outputColor="#999"
-        prompt="#999"
-        hideTopBar={true}
-        allowTabs={false}
-        promptSymbol={">"}
-        backgroundColor="rgba(0,0,0,0)"
-        barColor="black"
-        style={{ position: "fixed", backgroundColor: "white", left: "25%", margin: "auto", borderRadius: "1em", color: "orange", marginTop: "10%", minWidth: "300px", width: "50%", overflow: "hidden", minHeight: "200px", height: "50%", fontWeight: "bold", fontSize: "1em", zIndex: "1000" }}
-        commands={{
-        }}
-        description={{
-        }}
-        msg={"Established connection with The Nexus, Heart Node 98712"}
-        commandPassThrough={handleCommand}
-      />
+      <div className="nav">
 
+        <span className="nav-item"><a href="https://github.com/thenexuscity">GITHUB</a></span>
+        <span className="nav-item"><a href="https://discord.gg/cryptosabers">DISCORD</a></span>
+        <span className="nav-item-bold"><a href="https://github.com/thenexuscity/whitepaper">WHITEPAPER</a></span>
+
+      </div>
+
+<div className="main-center">
+{count ? (
+  <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
+    <span>A city in the open verse</span>
+    <Typist.Backspace count={50} delay={800} />
+    <span>An R&D lab for digital life</span>
+    <Typist.Backspace count={50} delay={800} />
+    <span>A place for ents and humans to coexist</span>
+    <Typist.Backspace count={50} delay={800} />
+    <span>An elite team of metaverse experts</span>
+    <Typist.Backspace count={50} delay={800} />
+  </Typist>
+) : (
+  ""
+)}
+
+</div>
 
     </div>
   );

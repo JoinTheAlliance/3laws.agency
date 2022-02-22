@@ -139,3 +139,7 @@
 .react-terminal-wrapper.react-terminal-light .react-terminal-progress-bar {
   background-color: #000;
 } */
+
+.nav-item {
+  margin:1em;
+}
