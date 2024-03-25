@@ -1,10 +1,4 @@
-# Cryptosabers Takeover
-
-The launch website has been hacked.
-
-## Available Scripts
-
-In the project directory, you can run:
+# 3laws.agency
 
 ### `npm start`
 

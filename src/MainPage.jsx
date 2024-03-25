@@ -254,27 +254,22 @@ function App() {
       }}
     >
       <div className="nav">
-
-        <span className="nav-item"><a href="https://github.com/thenexuscity">GITHUB</a></span>
-        <span className="nav-item"><a href="https://discord.gg/cryptosabers">DISCORD</a></span>
-        <span className="nav-item-bold"><a href="https://github.com/thenexuscity/whitepaper">WHITEPAPER</a></span>
+        <span className="nav-item"><a href="https://github.com/jointhealliance">GITHUB</a></span>
+        <span className="nav-item"><a href="https://discord.gg/jointhealliance">DISCORD</a></span>
+        <span className="nav-item-bold"><a href="https://github.com/jointhealliance/start-here">CONTACT US</a></span>
 
       </div>
 
 <div className="main-center">
 {count ? (
   <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
-    <span>A city in the <b>open verse</b></span>
-    <Typist.Backspace count={50} delay={800} />
-    <span>An R&D lab for <b>digital living</b></span>
-    <Typist.Backspace count={50} delay={800} />
-    <span>A place for <b>ents and humans</b> to coexist</span>
-    <Typist.Backspace count={50} delay={800} />
-    <span>Guardians of the <b>open metaverse</b></span>
-    <Typist.Backspace count={50} delay={800} />
-    <span>A band of saber-wielding <b>revolutionaries</b></span>
+    <span>R&D lab for <b>agentic AI</b></span>
     <Typist.Backspace count={60} delay={800} />
-    <span>Developers of <b>free, open source</b> technology</span>
+    <span>Full-service <b>AI product development</b></span>
+    <Typist.Backspace count={60} delay={800} />
+    <span>AI for <b>social good</b></span>
+    <Typist.Backspace count={60} delay={800} />
+    <span>Decentralized <b>AI research</b></span>
     <Typist.Backspace count={60} delay={800} />
   </Typist>
 ) : (

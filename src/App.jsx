@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./Home";
 import Lake from "./Lake";
-import Nexus from "./Nexus";
+import MainPage from "./MainPage";
 import AIEditor from "./AIEditor";
 import ConfigEditor from './ConfigEditor';
 
@@ -15,9 +15,9 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Nexus />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/lake" element={<Lake />} />
-        <Route path="/nexus" element={<Nexus />} />
+        <Route path="/mainpage" element={<MainPage />} />
         <Route path="/editor" element={<AIEditor />} />
         <Route path="/config" element={<ConfigEditor />} />
       </Routes>
